@@ -7,6 +7,8 @@ Secondly clone this repo and change to the cloned directory.
 
 Run:
 
-dotnet restore
+    dotnet restore
 
-dotnet run
+And then
+
+    dotnet run

@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SharpDX\SharpDX\SharpDX.csproj" />
+    <ProjectReference Include="..\SharpDX\SharpDX.D3DCompiler\SharpDX.D3DCompiler.csproj" />
+    <ProjectReference Include="..\SharpDX\SharpDX.Desktop\SharpDX.Desktop.csproj" />
+    <ProjectReference Include="..\SharpDX\SharpDX.Direct3D11\SharpDX.Direct3D11.csproj" />
+    <ProjectReference Include="..\SharpDX\SharpDX.DXGI\SharpDX.DXGI.csproj" />
+    <ProjectReference Include="..\SharpDX\SharpDX.Mathematics\SharpDX.Mathematics.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="MiniTri.fx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

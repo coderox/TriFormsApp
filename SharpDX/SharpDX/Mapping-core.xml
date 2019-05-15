@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+// Copyright (c) 2010-2014 SharpDX - Alexandre Mutel
+// 
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+// 
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+// 
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+-->
+<config id="sharpdx-core" xmlns="urn:SharpGen.Config">
+  <depends>sharpdx-root</depends>
+
+  <namespace>SharpDX</namespace>
+  <assembly>SharpDX</assembly>
+
+  <include file="Unknwnbase.h" namespace="SharpDX">
+    <attach>IUnknown</attach>
+  </include>
+
+  <include file="objidlbase.h" namespace="SharpDX.Win32" output="Win32">
+    <attach>STATSTG</attach>
+    <attach>tagLOCKTYPE</attach>
+    <attach>LOCKTYPE</attach>
+    <attach>ISequentialStream</attach>
+    <attach>IStream</attach>
+  </include>
+
+  <include file="wtypes.h" namespace="SharpDX.Win32" output="Win32">
+    <attach>tagSTGC</attach>
+    <attach>STGC</attach>
+    <attach>STATFLAG</attach>    
+  </include>
+
+  <include file="winerror.h" namespace="SharpDX.Win32" output="Win32"/>
+
+  <!-- SharpDX global types -->
+  <extension>
+    <context>sharpdx-core-ext</context>
+    <context>sharpdx-core</context>
+    <context>winerror</context>
+    <create-cpp enum="SHARPDX_ERRORCODE" macro="ERROR_(.*)" />
+    <context-clear/>
+    
+  </extension>
+
+  <!--
+    // *****************************************************************
+    // Bindings
+    // *****************************************************************
+    -->
+  <bindings>
+    <!-- SharpDX bindings -->
+    <bind from="SHARPDX_USHORT" to="System.UInt16" />
+    <bind from="SHARPDX_BOOL4" to="SharpDX.Mathematics.Interop.RawBool4" />
+    <bind from="SHARPDX_INT3" to="SharpDX.Mathematics.Interop.RawInt3" />
+    <bind from="SHARPDX_INT4" to="SharpDX.Mathematics.Interop.RawInt4" />
+    <bind from="SHARPDX_COLOR4" to="SharpDX.Mathematics.Interop.RawColor4" />
+    <bind from="SHARPDX_VECTOR4" to="SharpDX.Mathematics.Interop.RawVector4" />
+    <bind from="SHARPDX_MATRIX" to="SharpDX.Mathematics.Interop.RawMatrix" />
+    <bind from="SHARPDX_SEEKORIGIN" to="System.IO.SeekOrigin" />
+
+    <!-- Global D3DX/D3D bindings -->
+    <bind from="D3DCOLORVALUE" to="SharpDX.Mathematics.Interop.RawColor4" />
+    <bind from="D3DXCOLOR" to="SharpDX.Mathematics.Interop.RawColor4" />
+    <bind from="D3DXMATRIX" to="SharpDX.Mathematics.Interop.RawMatrix" />
+    <bind from="D3DMATRIX" to="SharpDX.Mathematics.Interop.RawMatrix" />
+    <bind from="D3DXVECTOR2" to="SharpDX.Mathematics.Interop.RawVector2" />
+    <bind from="D3DVECTOR" to="SharpDX.Mathematics.Interop.RawVector3" />
+    <bind from="D3DXVECTOR3" to="SharpDX.Mathematics.Interop.RawVector3" />
+    <bind from="D3DXVECTOR4" to="SharpDX.Mathematics.Interop.RawVector4" />
+    <bind from="D3DXQUATERNION" to="SharpDX.Mathematics.Interop.RawQuaternion" />
+    <bind from="D3DXPLANE" to="SharpDX.Mathematics.Interop.RawPlane" />
+    <bind from="D3DCOLOR" to="SharpDX.Mathematics.Interop.RawColorBGRA"/>
+    <bind from="D3DXFLOAT16" to="System.Int32" />
+    <bind from="D3DXVECTOR2_16F" to="System.Int32" />
+    <bind from="D3DXVECTOR3_16F" to="System.Int32" />
+    <bind from="D3DXVECTOR4_16F" to="System.Int32" />
+    <bind from="D3D_OMAC" to="System.Guid" />
+    <bind from="D3DRECT" to="SharpDX.Mathematics.Interop.RawRectangle" />
+
+    <!-- DirectX 11.2 structure -->
+    <bind from="DXGI_MATRIX_3X2_F" to="SharpDX.Mathematics.Interop.RawMatrix3x2" />
+
+    <!-- Win32 bindings -->
+    <bind from="INT_PTR" to="System.IntPtr" />
+    <bind from="UINT_PTR" to="System.IntPtr" />
+    <bind from="LONG_PTR" to="System.IntPtr" />
+    <bind from="ULONG_PTR" to="System.IntPtr" />
+    <bind from="HANDLE_PTR" to="System.IntPtr" /> 
+
+    <bind from="LPGLYPHMETRICSFLOAT" to="System.IntPtr" />
+    <bind from="WAVEFORMATEX" to="SharpDX.Multimedia.WaveFormat" />
+    <bind from="tWAVEFORMATEX" to="SharpDX.Multimedia.WaveFormat" />    
+    <bind from="WAVEFORMATEXTENSIBLE" to="SharpDX.Multimedia.WaveFormatExtensible" />
+    <bind from="POINT" to="SharpDX.Mathematics.Interop.RawPoint" />
+    <bind from="RECT" to="SharpDX.Mathematics.Interop.RawRectangle" />
+    <bind from="BOOL" to="SharpDX.Mathematics.Interop.RawBool"/>
+    <bind from="HACCEL" to="System.IntPtr"/>    
+    <bind from="HWND" to="System.IntPtr"/>
+    <bind from="HDC" to="System.IntPtr"/>
+    <bind from="HICON" to="System.IntPtr"/>
+    <bind from="HKEY" to="System.IntPtr"/>
+    <bind from="HBITMAP" to="System.IntPtr"/>
+    <bind from="HINSTANCE" to="System.IntPtr"/>
+    <bind from="HMONITOR" to="System.IntPtr"/>
+    <bind from="HPALETTE" to="System.IntPtr"/>
+    <bind from="LUID" to="System.Int64"/>
+    <bind from="LARGE_INTEGER" to="System.Int64"/>
+    <bind from="ULARGE_INTEGER" to="System.Int64"/>    
+    <bind from="HRESULT" to="SharpDX.Result" />
+    <bind from="FILETIME" to="System.Int64" />
+    <bind from="GUID" to="System.Guid" />
+    <bind from="COLORREF" to="System.Int32" />
+    <bind from="__function__stdcall" to="SharpDX.FunctionCallback" />
+    <bind from="SIZE" to="SharpDX.Size2" />
+    <bind from="SIZE_T" to="SharpDX.PointerSize" />
+    <bind from="SSIZE_T" to="SharpDX.PointerSize" />
+		<bind from="MSG" to="SharpDX.Win32.NativeMessage" />
+    <bind from="ULONG" to="System.Int32" />
+    <bind from="LONG" to="System.Int32" />
+    <bind from="DWORD" to="System.Int32" />
+
+    <bind from="SECURITY_ATTRIBUTES" to="SharpDX.Win32.SecurityAttributes"/>
+    
+    <!-- todo Color 8 bit must be created-->
+    <bind from="RGBQUAD" to="System.Int32"/>
+
+    <!-- unsupported type yet -->
+    <bind from="HALF_PTR" to="SharpDX.Win32.Unsupported.HALF_PTR"/>
+    <bind from="UHALF_PTR" to="SharpDX.Win32.Unsupported.UHALF_PTR"/>
+    
+    <bind from="BITMAPINFOHEADER" to="SharpDX.Win32.BitmapInfoHeader"/>
+    <bind from="VIDEOINFOHEADER" to="SharpDX.Win32.Unsupported.VideoInfoHeader"/>
+    <bind from="AM_MEDIA_TYPE" to="SharpDX.Win32.Unsupported.AMMediaType"/>
+    <bind from="RPC_MESSAGE" to="SharpDX.Win32.Unsupported.RpcMessage"/>
+    <bind from="SAFEARRAY" to="SharpDX.Win32.Unsupported.SafeArray"/>
+    <bind from="VARIANT" to="SharpDX.Win32.Variant"/>
+    <bind from="PROPVARIANT" to="SharpDX.Win32.Variant"/>
+
+    <!-- todo create those structures -->
+    <bind from="RGNDATA" to="System.IntPtr"/>
+    <bind from="TEXTMETRICW" to="SharpDX.Win32Native.TextMetric"/>
+    <bind from="TEXTMETRICA" to="SharpDX.Win32Native.TextMetricA"/>
+    <bind from="LOGFONTW" to="SharpDX.DirectWrite.GdiInterop.LogFont"/>
+
+    <!-- Win32 structures -->
+    <bind from="DISPPARAMS" to="System.Runtime.InteropServices.ComTypes.DISPPARAMS"/>
+    <bind from="EXCEPINFO" to="System.Runtime.InteropServices.ComTypes.EXCEPINFO"/>
+
+    <!-- Root IUnknown interface -->
+    <bind from="IDispatch" to="SharpDX.ComDispatch" />
+    <bind from="IPersist" to="SharpDX.ComPersistBase" />
+    <bind from="IPropertyBag" to="SharpDX.ComPropertyBag" />
+
+    <!-- COM interfaces not directly used -->
+    <bind from="ITypeInfo" to="SharpDX.ComObject" />
+    <bind from="IErrorLog" to="SharpDX.ComObject" />
+    <bind from="IMoniker" to="SharpDX.ComObject" />
+    <bind from="IEnumMoniker" to="SharpDX.ComObject" />
+    <bind from="IBindCtx" to="SharpDX.ComObject" />
+    <bind from="IRpcStubBuffer" to="SharpDX.ComObject"/>
+    <bind from="IRpcChannelBuffer" to="SharpDX.ComObject"/>
+    <bind from="IPropertyStore" to="SharpDX.ComObject"/>
+    <bind from="IPropertyBag2" to="SharpDX.Win32.PropertyBag"/>
+    <bind from="IClassFactory" to="SharpDX.ComObject"/>
+    <bind from="IEnumUnknown" to="SharpDX.ComObject"/>
+    <bind from="IEnumString" to="SharpDX.ComObject"/>
+    <bind from="INamedPropertyStore" to="SharpDX.ComObject"/>
+  </bindings>  
+
+  <!-- SharpDX global mapping -->
+  <mapping>
+    <context>sharpdx-core-ext</context>
+    <context>sharpdx-core</context>
+    <context>winerror</context>
+    <map enum="SHARPDX_ERRORCODE" assembly="SharpDX" namespace="SharpDX.Win32" name="ErrorCode"/>
+    <map enum-item="ERROR_(.*)" name-tmp="$1" naming="noexpand"/>
+    <context-clear/>
+
+    <context>Unknwnbase</context>
+    <map interface="IUnknown" callback="true" callback-dual="true" callback-name="ComObject" callback-visibility="public" />
+    <remove method="IUnknown::.*" />
+    <context-clear/>
+
+    <!-- Map IStream -->
+    <context>objidlbase</context>
+    <context>wtypes</context>
+    <map struct="STATSTG" name="StorageStatistics" />
+
+    <map enum="STGC" name="CommitFlags" flags="true"/>
+    <map enum-item="STGC_(.*)" name-tmp="$1"/>
+    <map enum-item="STGC_ONLYIFCURRENT" name="OnlyCurrent"/>
+    <map enum-item="STGC_DANGEROUSLYCOMMITMERELYTODISKCACHE" name="DangerouslyCommitMerelyToDiskCache"/>
+
+    <map enum="LOCKTYPE" name="LockType" flags="true"/>
+    <map enum-item="LOCK_(.*)" name-tmp="$1"/>
+    <map enum-item="LOCK_ONLYONCE" name="OnlyOnce"/>
+
+    <map enum="STATFLAG" name="StorageStatisticsFlags"/>
+    <map enum-item="STATFLAG_DEFAULT" name="Default"/>
+    <map enum-item="STATFLAG_NONAME" name="NoName"/>
+    <remove enum-item="STATFLAG_NOOPEN"/>
+
+    <map interface="ISequentialStream" name="IStreamBase" callback-visibility="public" callback="true" callback-dual="true" callback-name="ComStreamBase"/>
+    <map param="ISequentialStream::Read::pcbRead" return="true"/>
+    <map param="ISequentialStream::Write::pcbWritten" return="true"/>
+    <map method="ISequentialStream::.*" keep-implement-public="true"/>
+
+    <map interface="IStream" name="IStream" callback-visibility="public" callback="true" callback-dual="true" callback-name="ComStream"/>
+    <map param="IStream::Seek::dwOrigin" type="SHARPDX_SEEKORIGIN"/>
+    <map param="IStream::Seek::plibNewPosition" return="true"/>
+    <map param="IStream::CopyTo::pcbRead" attribute="out" return="true"/>
+    <map param="IStream::CopyTo::pcbWritten" attribute="out"/>
+    <map param="IStream::Commit::grfCommitFlags" type="STGC"/>
+    <map param="IStream::.*::dwLockType" type="LOCKTYPE"/>
+    <map method="IStream::Stat" name="GetStatistics" />
+    <map param="IStream::Stat::pstatstg" attribute="out" return="true"/>
+    <map param="IStream::Stat::grfStatFlag" type="STATFLAG"/>
+    <map param="IStream::Clone::ppstm" return="true"/>
+    <map method="IStream::.*" keep-implement-public="true" property="false" />
+    
+    <context-clear/>
+  </mapping>
+</config>

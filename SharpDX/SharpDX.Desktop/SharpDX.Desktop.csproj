@@ -1,0 +1,34 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45</TargetFrameworks>
+    <PackageId>SharpDX.Desktop</PackageId>
+    <Product>SharpDX.Desktop</Product>
+    <DocumentationFile Condition="'$(Configuration)' == 'Release'">bin\$(Configuration)\$(TargetFramework)\SharpDX.Desktop.xml</DocumentationFile>
+    <AssemblyTitle>SharpDX.Desktop</AssemblyTitle>
+    <Title>SharpDX.Desktop</Title>
+    <Description>Assembly providing APIs related to Desktop platform.</Description>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Documentation\CodeComments.xml" />
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpDX\SharpDX.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="RenderControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="RenderForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
+  
+</Project>

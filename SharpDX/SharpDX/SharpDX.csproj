@@ -1,0 +1,25 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45;netstandard1.1;uap10.0</TargetFrameworks>
+    <PackageId>SharpDX</PackageId>
+    <Product>SharpDX</Product>
+    <DocumentationFile Condition="'$(Configuration)' == 'Release'">bin\$(Configuration)\$(TargetFramework)\SharpDX.xml</DocumentationFile>
+    <AssemblyTitle>SharpDX</AssemblyTitle>
+    <Title>SharpDX</Title>
+    <Description>Core assembly for all SharpDX assemblies.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="Mapping-core.xml" />
+    <None Include="Direct3D\Mapping.xml" />
+    <None Include="Documentation\CodeComments.xml" />
+    <None Include="Mapping.xml" />
+    <None Include="Multimedia\Mapping.xml" />
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <Import Project="../MappingFiles.props" />
+</Project>

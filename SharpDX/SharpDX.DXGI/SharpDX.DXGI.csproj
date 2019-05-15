@@ -1,0 +1,23 @@
+﻿<Project Sdk="MSBuild.Sdk.Extras">
+  
+  <PropertyGroup>
+    <TargetFrameworks>net40;net45;netstandard1.1;uap10.0</TargetFrameworks>
+    <PackageId>SharpDX.DXGI</PackageId>
+    <Product>SharpDX.DXGI</Product>
+    <DocumentationFile Condition="'$(Configuration)' == 'Release'">bin\$(Configuration)\$(TargetFramework)\SharpDX.DXGI.xml</DocumentationFile>
+    <AssemblyTitle>SharpDX.DXGI</AssemblyTitle>
+    <Title>SharpDX.DXGI</Title>
+    <Description>Assembly providing DirectX - DXGI managed API.</Description>
+    <PackageTags>$(PackageTags) DXGI</PackageTags>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="Documentation\CodeComments.xml" />
+    <None Include="Mapping.xml" />
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SharpDX\SharpDX.csproj" />
+  </ItemGroup>
+</Project>

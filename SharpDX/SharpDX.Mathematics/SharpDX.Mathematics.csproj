@@ -1,4 +1,31 @@
-﻿<Project Sdk="MSBuild.Sdk.Extras">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <PackageId>SharpDX.Mathematics</PackageId>
+    <Product>SharpDX.Mathematics</Product>
+    <!-- <DocumentationFile Condition="'$(Configuration)' == 'Release'">bin\$(Configuration)\$(TargetFramework)\SharpDX.Mathematics.xml</DocumentationFile> -->
+    <AssemblyTitle>SharpDX.Mathematics</AssemblyTitle>
+    <Title>SharpDX.Mathematics</Title>
+    <Description>Assembly providing DirectX - Mathematics managed API.</Description>
+    <PackageTags>$(PackageTags) Mathematics HLSL fx Shaders</PackageTags>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SharpDX\SharpDX.csproj" />
+  </ItemGroup>
+
+</Project>
+
+<!-- <Project Sdk="MSBuild.Sdk.Extras">
   
   <PropertyGroup>
     <TargetFrameworks>net40;net45;netstandard1.1;uap10.0</TargetFrameworks>
@@ -18,4 +45,4 @@
   <ItemGroup>
     <ProjectReference Include="..\SharpDX\SharpDX.csproj" />
   </ItemGroup>
-</Project>
+</Project> -->
